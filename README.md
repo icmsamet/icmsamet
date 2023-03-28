@@ -3,7 +3,7 @@
 <h1 align="center">Hi 👋, I'm Samet</h1>
 <h3 align="center">I'm a Game Developer</h3>
 
-- 👨‍💻 All of my projects are available at [https://icmsamet.itch.io/](https://icmsamet.itch.io/)
+<!---- 👨‍💻 All of my projects are available at [https://icmsamet.itch.io/](https://icmsamet.itch.io/)--->
 
 - 📫 How to reach me **icmsamet@gmail.com**
 
