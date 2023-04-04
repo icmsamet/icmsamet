@@ -5,8 +5,17 @@
 
 I'm 19 Years Old.
 
-I have been developing program and game for 5 years.
 <!---- 👨‍💻 All of my projects are available at [https://icmsamet.itch.io/](https://icmsamet.itch.io/)--->
+
+- 🚀 I've been developing various projects for about 5 years due to my curiosity in programming and technology.
+
+- 🤖 I've been active in the gaming industry for the past 3 years as a Game Developer, with experience working at both hypercasual and casual studios. I develop games using the Unity game engine and C#.
+
+- 🛠️ Over the past 1.5 years, I've been focusing on improving my Unity skills and creating tools and assets.
+
+- 🔭 I keep up with technological advancements and constantly strive to improve my skills in other areas as well.
+
+- 🤖 I've also created robots and machines using Arduino and Raspberry Pi.
 
 - 📫 How to reach me **icmsamet@gmail.com**
 
