@@ -3,6 +3,9 @@
 <h1 align="center">Hi 👋, I'm Samet</h1>
 <h3 align="center">I'm a Game Developer</h3>
 
+I'm 19 Years Old.
+
+I have been developing program and game for 5 years.
 <!---- 👨‍💻 All of my projects are available at [https://icmsamet.itch.io/](https://icmsamet.itch.io/)--->
 
 - 📫 How to reach me **icmsamet@gmail.com**
