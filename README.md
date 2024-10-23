@@ -1,9 +1,4 @@
-
-<h1 align="center">Hi 👋, I'm Samet</h1>
-<h3 align="center">I'm a Game Developer</h3>
-
 <!---- 👨‍💻 All of my projects are available at [https://icmsamet.itch.io/](https://icmsamet.itch.io/)--->
-
 Samet | Game Developer & Robotics Enthusiast
 
 I am a 20-year-old developer with seven years of experience in various tech projects. Over the past five years, I've been active in the gaming industry, focusing on game development using Unity and C#. I've worked in both hypercasual and casual studios, where I refined my skills in creating engaging games.
