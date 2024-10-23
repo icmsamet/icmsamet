@@ -1,4 +1,4 @@
-![Colorful Illustration Game Linkedin Banner](https://user-images.githubusercontent.com/76155610/228109134-7f6a30a6-593d-4791-990c-1c724bd3e619.gif)
+![Colorful Illustration Game Linkedin Banner]([https://user-images.githubusercontent.com/76155610/228109134-7f6a30a6-593d-4791-990c-1c724bd3e619.gif](https://media.licdn.com/dms/image/v2/D4D16AQFTUfzXWZ427w/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1708638776574?e=1735171200&v=beta&t=oglVMzPbkf6sNz9P8DfO5dy2BJFssKRNTmjm9-YNnDg))
 
 <h1 align="center">Hi 👋, I'm Samet</h1>
 <h3 align="center">I'm a Game Developer</h3>
@@ -12,8 +12,6 @@ I am a 20-year-old developer with seven years of experience in various tech proj
 Beyond game development, I have experience in building robots and machines with Arduino and Raspberry Pi. I also provided 3D printing and robotics coding education at a specialized training institution.
 
 My goal is to excel in the gaming industry by continuously improving my technical and creative skills. I’m driven by a passion for innovation and a commitment to learning, which motivates me to push boundaries and take on new challenges.
-
-- 📄 Know about my experiences [https://www.linkedin.com/in/sameticim/](https://www.linkedin.com/in/sameticim/)
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
