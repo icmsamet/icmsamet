@@ -5,17 +5,13 @@
 
 <!---- 👨‍💻 All of my projects are available at [https://icmsamet.itch.io/](https://icmsamet.itch.io/)--->
 
-- 🚀 I've been developing various projects for about 6 years due to my curiosity in programming and technology.
+Samet | Game Developer & Robotics Enthusiast
 
-- 🤖 I've been active in the gaming industry for the past 4 years as a Game Developer, with experience working at both hypercasual and casual studios. I develop games using the Unity game engine and C#.
+I am a 20-year-old developer with seven years of experience in various tech projects. Over the past five years, I've been active in the gaming industry, focusing on game development using Unity and C#. I've worked in both hypercasual and casual studios, where I refined my skills in creating engaging games.
 
-- 🛠️ Over the past 1.5 years, I've been focusing on improving my Unity skills and creating tools and assets.
+Beyond game development, I have experience in building robots and machines with Arduino and Raspberry Pi. I also provided 3D printing and robotics coding education at a specialized training institution.
 
-- 🔭 I keep up with technological advancements and constantly strive to improve my skills in other areas as well.
-
-- 🤖 I've also created robots and machines using Arduino and Raspberry Pi.
-
-- 📫 How to reach me **icmsamet@gmail.com**
+My goal is to excel in the gaming industry by continuously improving my technical and creative skills. I’m driven by a passion for innovation and a commitment to learning, which motivates me to push boundaries and take on new challenges.
 
 - 📄 Know about my experiences [https://www.linkedin.com/in/sameticim/](https://www.linkedin.com/in/sameticim/)
 
