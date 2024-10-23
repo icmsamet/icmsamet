@@ -1,4 +1,3 @@
-![Colorful Illustration Game Linkedin Banner]([https://user-images.githubusercontent.com/76155610/228109134-7f6a30a6-593d-4791-990c-1c724bd3e619.gif](https://media.licdn.com/dms/image/v2/D4D16AQFTUfzXWZ427w/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1708638776574?e=1735171200&v=beta&t=oglVMzPbkf6sNz9P8DfO5dy2BJFssKRNTmjm9-YNnDg))
 
 <h1 align="center">Hi 👋, I'm Samet</h1>
 <h3 align="center">I'm a Game Developer</h3>
