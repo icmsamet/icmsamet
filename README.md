@@ -1,11 +1,15 @@
 <!---- 👨‍💻 All of my projects are available at [https://icmsamet.itch.io/](https://icmsamet.itch.io/)--->
-Samet | Game Developer
+Samet | Software & Game Developer
 
-I am 21 years old developer with seven years of experience in various tech projects. Over the past five years, I've been active in the gaming industry, focusing on game development using Unity and C#. I've worked in both hypercasual and casual studios, where I refined my skills in creating engaging games.
+I’m a software and game developer with 8 years of experience working on a wide range of technical projects, including 5 years in the game industry.
 
-Beyond game development, I have experience in building robots and machines with Arduino and Raspberry Pi. I also provided 3D printing and robotics coding education at a specialized training institution.
+My main expertise is Unity and C#, but I don’t limit myself to a specific field. I’ve worked on games, applications, automation systems, multiplayer projects, hardware-based systems, robotics, and other custom solutions.
 
-My goal is to excel in the gaming industry by continuously improving my technical and creative skills. I’m driven by a passion for innovation and a commitment to learning, which motivates me to push boundaries and take on new challenges.
+I enjoy taking on projects that require more than just writing code — understanding the problem, finding the right approach, and turning an idea into something that actually works.
+
+Whether it’s improving an existing project or building something from scratch, I’m always open to new challenges and different kinds of problems.
+
+If there’s a problem to solve or an idea to build, let’s figure it out.
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
