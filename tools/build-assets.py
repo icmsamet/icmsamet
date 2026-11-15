@@ -86,7 +86,11 @@ def font(fam, wght):
         f = TTFont(SITE.assets / FONT_FILES[fam])
         ax = next(a for a in f["fvar"].axes if a.axisTag == "wght")
         w = max(ax.minValue, min(ax.maxValue, wght))
-        _inst[key] = instancer.instantiateVariableFont(f, {"wght": w})
+        inst = instancer.instantiateVariableFont(f, {"wght": w})
+        # Kaydederken head.modified güncellenmesin: içerik aynıysa çıktı da aynı kalsın,
+        # yoksa her çalıştırma bütün SVG'leri "değişti" gösterir.
+        inst.recalcTimestamp = False
+        _inst[key] = inst
     return _inst[key]
 
 
@@ -121,7 +125,7 @@ def font_face(fam, wght, chars):
     buf = io.BytesIO()
     font(fam, wght).save(buf)
     buf.seek(0)
-    f = TTFont(buf)
+    f = TTFont(buf, recalcTimestamp=False)
     opt = subset.Options()
     opt.flavor = "woff2"
     sub = subset.Subsetter(opt)
@@ -283,12 +287,10 @@ def hero(lang):
         HONEY, SHADOW,
     ]
 
-    # ---- sağ: bal lekesi, dönen halka, el sallayan maskot, araç etiketleri
+    # ---- sağ: bal lekesi ve el sallayan maskot. Kesikli halka ve araç
+    # etiketleri sitede kaldırıldı, burada da yok.
     CX, CY = 952, 300
     b.append(f'<g clip-path="url(#card)"><rect width="{W}" height="{H}" fill="{C["bg"]}"/>')
-    b.append(f'<g class="r" style="--d:120ms"><g class="ring"><circle cx="{CX}" cy="{CY}" r="222" '
-             f'fill="none" stroke="{C["kum"]}" stroke-width="2" stroke-linecap="round" '
-             f'stroke-dasharray="1 13"/></g></g>')
     b.append(f'<g class="r" style="--d:60ms"><g class="blob"><path d="{blob_path(CX, CY + 22, 178)}" '
              f'fill="url(#honey)"/></g></g>')
 
@@ -299,19 +301,6 @@ def hero(lang):
     mx, my = CX - MW * .55, H - MH + 30  # 30px kart dışına taşar: süzülürken alt kenar açılmasın
     b.append(f'<g class="mr"><g class="fl"><g class="wv"><image href="{data_uri(wav)}" '
              f'x="{mx:.1f}" y="{my:.1f}" width="{MW:.1f}" height="{MH}"/></g></g></g>')
-
-    tools = [t["ad"] for t in c.get("araclar", [])]
-    # Sol üst boş bırakıldı: el sallayan el oraya geliyor, etiket parmakları örtmesin.
-    slots = [("L", 150), ("R", 120), ("L", 322), ("R", 240), ("L", 436), ("R", 364)]
-    for i, (name, (side, y)) in enumerate(zip(tools, slots)):
-        tw = measure(name, "N", 800, 14)
-        w = 16 + 14 + tw + 16
-        x = 708 if side == "L" else 1172 - w
-        b.append(f'<g class="r" style="--d:{700 + i * 90}ms"><g class="k{i % 3 + 1}">'
-                 f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="36" rx="18" fill="{C["card"]}" '
-                 f'stroke="{C["line"]}" filter="url(#sh)"/>'
-                 f'<circle cx="{x + 20:.1f}" cy="{y + 18}" r="4.5" fill="{C["bal"]}"/>'
-                 + s.text(x + 30, y + 23, name, "N", 800, 14, C["ink"]) + "</g></g>")
 
     # ---- sol: imza, üst başlık, başlık, açıklama, rakamlar
     d = re.search(r'\sd="([^"]+)"', (SITE.assets / "imza.svg").read_text("utf-8")).group(1)
@@ -362,7 +351,6 @@ def hero(lang):
     b.append(f'<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="28" fill="none" stroke="{C["line"]}"/>')
 
     s.css.append(
-        f".ring{{transform-box:view-box;transform-origin:{CX}px {CY}px}}"
         f".blob{{transform-box:view-box;transform-origin:{CX}px {CY + 22}px}}"
         f".wv{{transform-box:view-box;transform-origin:{CX}px {H + 20}px}}"
         + motion(
@@ -370,11 +358,7 @@ def hero(lang):
             f".mr{{animation:rise 1s {EASE} .25s both}}"
             ".fl{animation:fl 3.6s ease-in-out infinite alternate}"
             ".wv{animation:wv 6s ease-in-out 1.6s infinite}"
-            ".ring{animation:don 40s linear infinite}"
             ".blob{animation:yuz 10s ease-in-out infinite alternate}"
-            ".k1{animation:sek 5s ease-in-out infinite alternate}"
-            ".k2{animation:sek 6.5s ease-in-out .4s infinite alternate}"
-            ".k3{animation:sek 5.6s ease-in-out .8s infinite alternate}"
             f".sigw{{animation:yaz 1.6s {EASE_S} .15s both}}"
             f".ul{{stroke-dasharray:1 1;animation:ciz .9s {EASE_S} .8s both}}")
         + "@keyframes rv{from{opacity:0;transform:translateY(14px)}}"
@@ -383,9 +367,7 @@ def hero(lang):
           "@keyframes wv{0%,58%,100%{transform:rotate(0)}64%{transform:rotate(-2.4deg)}"
           "70%{transform:rotate(2.2deg)}76%{transform:rotate(-1.8deg)}82%{transform:rotate(1.2deg)}"
           "88%{transform:rotate(0)}}"
-          "@keyframes don{to{transform:rotate(360deg)}}"
           "@keyframes yuz{to{transform:rotate(6deg) scale(1.03)}}"
-          "@keyframes sek{to{transform:translateY(-12px)}}"
           f"@keyframes yaz{{from{{transform:translateX(-{SW + 24}px)}}}}"
           "@keyframes ciz{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}")
     return s.render()
@@ -539,29 +521,6 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
 
 
-def work_thumb(img):
-    """16:9 kart. Kare görsel bulanık kendi zemini üstünde ortalanır."""
-    W, H, R = 520, 292, 18
-    w, h = webp_size(img)
-    s = Svg(W, H, "")
-    s.defs.append(f'<clipPath id="c"><rect width="{W}" height="{H}" rx="{R}"/></clipPath>')
-    uri = data_uri(img)
-    if abs(w / h - W / H) < .08:
-        inner = f'<image href="{uri}" width="{W}" height="{H}" preserveAspectRatio="xMidYMid slice"/>'
-    else:
-        s.defs.append('<filter id="bl" x="-10%" y="-10%" width="120%" height="120%">'
-                      '<feGaussianBlur stdDeviation="22"/></filter>')
-        fh = H
-        fw = fh * w / h
-        inner = (f'<image href="{uri}" x="-40" y="-40" width="{W + 80}" height="{H + 80}" '
-                 f'preserveAspectRatio="xMidYMid slice" filter="url(#bl)"/>'
-                 f'<rect width="{W}" height="{H}" fill="#000" opacity=".12"/>'
-                 f'<image href="{uri}" x="{(W - fw) / 2:.1f}" width="{fw:.1f}" height="{fh}"/>')
-    s.body.append(f'<g clip-path="url(#c)">{inner}</g>')
-    out = s.render()
-    return out.replace("<title></title>", "").replace(' aria-label=""', "")
-
-
 def button(label, primary, arrow=False):
     size, pad, h = 15, 24, 46
     has_glyphs(label, "N", 800)
@@ -605,11 +564,8 @@ def main():
         write(f"reviews-{lang}.svg", reviews(lang))
     write("mascot-thinking.svg", thinking())
 
-    for src, dst in (("hakkimda", "about"), ("maskot-tam", "full"), ("maskot", "head")):
+    for src, dst in (("hakkimda", "about"), ("maskot-tam", "full")):
         write(f"mascot/{dst}.webp", SITE.image(f"/assets/maskot/{src}.webp"))
-
-    for it in SITE.c["isler"]["ogeler"]:
-        write(f'work/{slug(it["baslik"]["en"])}.svg', work_thumb(SITE.image(it["gorsel"])))
 
     write("button/start-en.svg", button("Tell us about your project", True, arrow=True))
     write("button/start-tr.svg", button("Projenizi anlatın", True, arrow=True))
