@@ -287,12 +287,10 @@ def hero(lang):
         HONEY, SHADOW,
     ]
 
-    # ---- sağ: bal lekesi ve el sallayan maskot. Kesikli halka ve araç
+    # ---- sağ: yalnızca el sallayan maskot. Bal lekesi, kesikli halka ve araç
     # etiketleri sitede kaldırıldı, burada da yok.
-    CX, CY = 952, 300
+    CX = 952
     b.append(f'<g clip-path="url(#card)"><rect width="{W}" height="{H}" fill="{C["bg"]}"/>')
-    b.append(f'<g class="r" style="--d:60ms"><g class="blob"><path d="{blob_path(CX, CY + 22, 178)}" '
-             f'fill="url(#honey)"/></g></g>')
 
     wav = SITE.image("/assets/maskot/poz-el-sallayan.webp")
     mw, mh = webp_size(wav)
@@ -351,14 +349,12 @@ def hero(lang):
     b.append(f'<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="28" fill="none" stroke="{C["line"]}"/>')
 
     s.css.append(
-        f".blob{{transform-box:view-box;transform-origin:{CX}px {CY + 22}px}}"
         f".wv{{transform-box:view-box;transform-origin:{CX}px {H + 20}px}}"
         + motion(
             f".r{{animation:rv .7s {EASE} both;animation-delay:var(--d,0ms)}}"
             f".mr{{animation:rise 1s {EASE} .25s both}}"
             ".fl{animation:fl 3.6s ease-in-out infinite alternate}"
             ".wv{animation:wv 6s ease-in-out 1.6s infinite}"
-            ".blob{animation:yuz 10s ease-in-out infinite alternate}"
             f".sigw{{animation:yaz 1.6s {EASE_S} .15s both}}"
             f".ul{{stroke-dasharray:1 1;animation:ciz .9s {EASE_S} .8s both}}")
         + "@keyframes rv{from{opacity:0;transform:translateY(14px)}}"
@@ -367,7 +363,6 @@ def hero(lang):
           "@keyframes wv{0%,58%,100%{transform:rotate(0)}64%{transform:rotate(-2.4deg)}"
           "70%{transform:rotate(2.2deg)}76%{transform:rotate(-1.8deg)}82%{transform:rotate(1.2deg)}"
           "88%{transform:rotate(0)}}"
-          "@keyframes yuz{to{transform:rotate(6deg) scale(1.03)}}"
           f"@keyframes yaz{{from{{transform:translateX(-{SW + 24}px)}}}}"
           "@keyframes ciz{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}")
     return s.render()
